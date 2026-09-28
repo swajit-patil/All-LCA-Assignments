@@ -1,2 +1,86 @@
-gefqvibfuqqbf
-fqwhyfduysaf87qwf7f
+# ==============================================================================
+# Assignment 1: Student Data Management using List, Tuple, and Dictionary
+# Subject: Problem Solving & Object Oriented Programming (Python)
+# Operations: Add, Update, Delete
+# ==============================================================================
+
+
+def list_operations():
+    print("=" * 40)
+    print("1. LIST OPERATIONS (Student Names)")
+    print("=" * 40)
+
+    # Initial list
+    students_list = ["Aarav", "Bhavna", "Chetan"]
+    print("Initial List       :", students_list)
+
+    # Add operations
+    students_list.append("Divya")  # Add to the end
+    students_list.insert(1, "Ananya")  # Add at index 1
+    print("After Add (append & insert):", students_list)
+
+    # Update operation
+    students_list[2] = "Bhavesh"  # Update index 2
+    print("After Update       :", students_list)
+
+    # Delete operations
+    students_list.remove("Chetan")  # Delete by value
+    popped_student = students_list.pop()  # Delete last item
+    print(f"After Delete (removed '{popped_student}'):", students_list)
+    print()
+
+
+def tuple_operations():
+    print("=" * 40)
+    print("2. TUPLE OPERATIONS (Student Names)")
+    print("=" * 40)
+
+    # Initial tuple
+    students_tuple = ("Aarav", "Bhavna", "Chetan")
+    print("Initial Tuple      :", students_tuple)
+
+    # Add operation (via concatenation, since tuples are immutable)
+    students_tuple = students_tuple + ("Divya",)
+    print("After Add          :", students_tuple)
+
+    # Update operation (via list conversion)
+    temp_list = list(students_tuple)
+    temp_list[1] = "Bhavesh"
+    students_tuple = tuple(temp_list)
+    print("After Update       :", students_tuple)
+
+    # Delete operation (via list conversion)
+    temp_list = list(students_tuple)
+    temp_list.remove("Chetan")
+    students_tuple = tuple(temp_list)
+    print("After Delete       :", students_tuple)
+    print()
+
+
+def dictionary_operations():
+    print("=" * 40)
+    print("3. DICTIONARY OPERATIONS (Roll No : Student Name)")
+    print("=" * 40)
+
+    # Initial dictionary
+    students_dict = {101: "Aarav", 102: "Bhavna", 103: "Chetan"}
+    print("Initial Dictionary :", students_dict)
+
+    # Add operation
+    students_dict[104] = "Divya"
+    print("After Add          :", students_dict)
+
+    # Update operation
+    students_dict[102] = "Bhavesh"
+    print("After Update       :", students_dict)
+
+    # Delete operation
+    deleted_val = students_dict.pop(103)
+    print(f"After Delete (key 103 -> '{deleted_val}'):", students_dict)
+    print()
+
+
+if __name__ == "__main__":
+    list_operations()
+    tuple_operations()
+    dictionary_operations()
