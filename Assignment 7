@@ -1,1 +1,54 @@
+# Assignment 7: Data visualization using Matplotlib and Seaborn
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
+# Create and load a sample dataset
+sample_data = {
+    "Month": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    "Sales": [120, 150, 170, 160, 210, 250],
+    "Expenses": [90, 110, 115, 120, 140, 160],
+    "Profit": [30, 40, 55, 40, 70, 90],
+    "Customers": [45, 55, 65, 60, 80, 95]
+}
+df = pd.DataFrame(sample_data)
+df.to_csv("business_data.csv", index=False)
+
+data = pd.read_csv("business_data.csv")
+print("Dataset Preview:\n", data.head())
+
+# 1. Line Plot
+plt.figure(figsize=(7, 4))
+plt.plot(data["Month"], data["Sales"], marker='o', label="Sales", color="blue")
+plt.plot(data["Month"], data["Expenses"], marker='s', label="Expenses", color="red")
+plt.title("Monthly Sales vs Expenses (Line Plot)")
+plt.xlabel("Month")
+plt.ylabel("Amount")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# 2. Bar Plot
+plt.figure(figsize=(7, 4))
+plt.bar(data["Month"], data["Profit"], color="green")
+plt.title("Monthly Profit Comparison (Bar Plot)")
+plt.xlabel("Month")
+plt.ylabel("Profit")
+plt.show()
+
+# 3. Scatter Plot
+plt.figure(figsize=(7, 4))
+plt.scatter(data["Customers"], data["Sales"], color="purple", s=70)
+plt.title("Customers vs Sales Relationship (Scatter Plot)")
+plt.xlabel("Number of Customers")
+plt.ylabel("Sales")
+plt.grid(True)
+plt.show()
+
+# 4. Seaborn Heatmap
+plt.figure(figsize=(6, 5))
+numeric_cols = data.select_dtypes(include=["int64", "float64"])
+corr_matrix = numeric_cols.corr()
+sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Correlation Heatmap")
+plt.show()
