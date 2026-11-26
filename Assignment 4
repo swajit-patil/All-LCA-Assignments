@@ -1,1 +1,24 @@
+import numpy as np
 
+rows = int(input("Enter number of rows: "))
+cols = int(input("Enter number of columns: "))
+
+print("\nEnter elements for Matrix A:")
+matrix_a = [[int(input(f"A[{i}][{j}]: ")) for j in range(cols)] for i in range(rows)]
+
+print("\nEnter elements for Matrix B:")
+matrix_b = [[int(input(f"B[{i}][{j}]: ")) for j in range(cols)] for i in range(rows)]
+
+# 1. Using nested lists
+result_list = [[matrix_a[i][j] + matrix_b[i][j] for j in range(cols)] for i in range(rows)]
+print("\nMatrix Addition using Python Lists:")
+for row in result_list:
+    print(row)
+
+# 2. Using NumPy arrays
+np_a = np.array(matrix_a)
+np_b = np.array(matrix_b)
+result_np = np.add(np_a, np_b)
+
+print("\nMatrix Addition using NumPy Arrays:")
+print(result_np)
