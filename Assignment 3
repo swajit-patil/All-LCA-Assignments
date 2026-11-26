@@ -1,1 +1,16 @@
+def is_right_angled(a, b, c):
+    # Sort sides so the longest side (hypotenuse) is last
+    sides = sorted([a, b, c])
+    # Check basic triangle validity and Pythagoras theorem
+    if sides[0] <= 0 or (sides[0] + sides[1] <= sides[2]):
+        return False
+    return round(sides[0]**2 + sides[1]**2, 5) == round(sides[2]**2, 5)
 
+side1 = float(input("Enter length of side 1: "))
+side2 = float(input("Enter length of side 2: "))
+side3 = float(input("Enter length of side 3: "))
+
+if is_right_angled(side1, side2, side3):
+    print("The triangle is a right-angled triangle.")
+else:
+    print("The triangle is NOT a right-angled triangle.")
