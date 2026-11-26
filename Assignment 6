@@ -1,1 +1,30 @@
+# Assignment 6: Data preprocessing on a CSV/DataFrame using Pandas
+import pandas as pd
+import numpy as np
 
+# Creating a sample dataset and saving to CSV to ensure standalone execution
+sample_data = {
+    "Student_ID": [1, 2, 3, 4, 5, 5],
+    "Name": ["Amit", "Neha", "Raj", "Simran", "Karan", "Karan"],
+    "Marks": [85.0, np.nan, 78.0, 92.0, np.nan, np.nan],
+    "City": ["Pune", "Mumbai", None, "Pune", "Delhi", "Delhi"]
+}
+df = pd.DataFrame(sample_data)
+df.to_csv("students_sample.csv", index=False)
+
+# 1. Load the CSV file
+data = pd.read_csv("students_sample.csv")
+print("Original Dataset:\n", data)
+
+# 2. Check and remove duplicates
+print("\nDuplicate rows found:", data.duplicated().sum())
+data = data.drop_duplicates()
+
+# 3. Handle missing values using fillna() and dropna()
+data["Marks"] = data["Marks"].fillna(data["Marks"].mean())
+data["City"] = data["City"].fillna("Unknown")
+print("\nDataset after cleaning duplicates and filling missing values:\n", data)
+
+# 4. Data selection and filtering using loc[]
+high_scorers = data.loc[data["Marks"] > 80, ["Name", "Marks", "City"]]
+print("\nFiltered Data (Marks > 80) using loc[]:\n", high_scorers)
