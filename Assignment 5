@@ -1,1 +1,13 @@
+# Assignment 5: Check if a string contains only a-z, A-Z, and 0-9
+import re
 
+def is_valid_string(text):
+    pattern = r'^[a-zA-Z0-9]+$'
+    return bool(re.match(pattern, text))
+
+user_input = input("Enter a string to check: ")
+
+if is_valid_string(user_input):
+    print("The string contains ONLY allowed characters (a-z, A-Z, 0-9).")
+else:
+    print("The string contains special characters or spaces outside the allowed set.")
